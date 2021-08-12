@@ -23,7 +23,7 @@ sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_gener
 echo -e "\x1B[92m修改 系统文件\x1B[0m" ""
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/index.htm > ./package/lean/autocore/files/x86/index.htm
-#curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/n1_index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 echo -e "\x1B[92m系统文件 修改完成\x1B[0m" ""
 echo
 echo -e "\x1B[92m添加 SSR Plus+\x1B[0m" ""
