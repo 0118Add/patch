@@ -154,10 +154,10 @@ sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-
 sed -i 's/实时流量监测/流量监测/g' package/lean/luci-app-wrtbwmon/po/zh-cn/wrtbwmon.po
 echo -e "\x1B[92m插件重新命名 完成\x1B[0m" ""
 
-sed -i 's/invalid/#invalid/g' feeds/packages/net/samba4/files/smb.conf.template
-echo
-echo -e "\x1B[92m调整 网络共享 到 存储菜单\x1B[0m" ""
-sed -i 's/\"services\"/\"nas\"/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
+#sed -i 's/invalid/#invalid/g' feeds/packages/net/samba4/files/smb.conf.template
+#echo
+#echo -e "\x1B[92m调整 网络共享 到 存储菜单\x1B[0m" ""
+#sed -i 's/\"services\"/\"nas\"/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
 echo -e "\x1B[92m调整 分流助手 到 网络菜单\x1B[0m" ""
 sed -i 's/\"services\"/\"network\"/g' package/lean/luci-app-mwan3helper/luasrc/controller/mwan3helper.lua
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/mwan3helper_status.htm > ./package/lean/luci-app-mwan3helper/luasrc/view/mwan3helper/mwan3helper_status.htm
