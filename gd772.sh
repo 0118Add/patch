@@ -16,12 +16,12 @@ echo -e "\x1B[92m添加 gd772常用 插件包\x1B[0m" ""
 rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
 echo -e "\x1B[92m插件包 添加完成\x1B[0m" ""
 echo
-echo -e "\x1B[92m修改 默认IP为 192.168.123.2\x1B[0m" ""
-sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
+echo -e "\x1B[92m修改 默认IP为 192.168.1.10\x1B[0m" ""
+sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
 #echo -e "\x1B[92m修改 主机名为 N1\x1B[0m" ""
 #sed -i "s/'OpenWrt'/'N1'/g" package/base-files/files/bin/config_generate
 echo -e "\x1B[92m修改 系统文件\x1B[0m" ""
-curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 #curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/x86_index.htm > ./package/lean/autocore/files/x86/index.htm
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 echo -e "\x1B[92m系统文件 修改完成\x1B[0m" ""
@@ -34,6 +34,8 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/g
 echo
 echo -e "\x1B[92m添加 Pass wall\x1B[0m" ""
 git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/xray-core
+svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-plugin package/xray-plugin
 echo
 echo -e "\x1B[92m添加 Hello World\x1B[0m" ""
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
