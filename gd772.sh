@@ -13,7 +13,7 @@ rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 echo -e "\x1B[92m添加 gd772常用 插件包\x1B[0m" ""
-rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
+rm -rf package/gd772 && git clone https://github.com/0118Add/ADD_Packages package/0118Add
 echo -e "\x1B[92m插件包 添加完成\x1B[0m" ""
 echo
 echo -e "\x1B[92m修改 默认IP为 192.168.1.10\x1B[0m" ""
@@ -27,38 +27,38 @@ curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > .
 echo -e "\x1B[92m系统文件 修改完成\x1B[0m" ""
 echo
 echo -e "\x1B[92m添加 SSR Plus+\x1B[0m" ""
-git clone https://github.com/fw876/helloworld package/gd772/ssrplus
+git clone https://github.com/fw876/helloworld package/0118Add/ssrplus
 echo
 echo -e "\x1B[92m添加 小猫咪\x1B[0m" ""
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/0118Add/luci-app-openclash
 echo
 echo -e "\x1B[92m添加 Pass wall\x1B[0m" ""
-git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
+git clone https://github.com/xiaorouji/openwrt-passwall package/0118Add/passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/xray-core
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-plugin package/xray-plugin
 echo
 echo -e "\x1B[92m添加 Hello World\x1B[0m" ""
-git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
+git clone https://github.com/jerrykuku/luci-app-vssr package/0118Add/luci-app-vssr
 echo
 echo -e "\x1B[92m添加 京东签到\x1B[0m" ""
-git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
+git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/0118Add/luci-app-jd-dailybonus
 echo
 echo -e "\x1B[92m添加 SmartDNS\x1B[0m" ""
-git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
+git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/0118Add/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 echo
 echo -e "\x1B[92m添加 KPR去广告\x1B[0m" ""
-git clone https://github.com/project-lede/luci-app-godproxy package/gd772/luci-app-godproxy
+git clone https://github.com/project-lede/luci-app-godproxy package/0118Add/luci-app-godproxy
 echo
 echo -e "\x1B[92m添加 微信推送\x1B[0m" ""
-git clone https://github.com/tty228/luci-app-serverchan.git ./package/gd772/luci-app-serverchan
+git clone https://github.com/tty228/luci-app-serverchan.git ./package/0118Add/luci-app-serverchan
 echo
 echo -e "\x1B[92m汉化 实时监控\x1B[0m" ""
 rm -rf ./package/lean/luci-app-netdata && svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
 rm -rf ./feeds/packages/admin/netdata && svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
 echo
 echo -e "\x1B[92m添加 Dockerman\x1B[0m" ""
-rm -rf package/gd772/luci-app-dockerman && svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/gd772/luci-app-dockerman
+rm -rf package/gd772/luci-app-dockerman && svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/0118Add/luci-app-dockerman
 echo              
 
 sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
@@ -67,35 +67,35 @@ sed -i 's/msgstr "Web 管理"/msgstr "Web"/g' package/lean/luci-app-webadmin/po/
 
 sed -i 's/TTYD 终端/命令行/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
 
-sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
+sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' package/0118Add/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 
-sed -i 's/PassWall/Pass Wall/g' package/gd772/passwall/luci-app-passwall/po/zh-cn/passwall.po
+sed -i 's/PassWall/Pass Wall/g' package/0118Add/passwall/luci-app-passwall/po/zh-cn/passwall.po
 
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' package/lean/luci-app-adbyby-plus/po/zh-cn/adbyby.po
 
 sed -i 's/("Dnsforwarder")/("广告过滤")/g' package/lean/luci-app-dnsforwarder/luasrc/controller/dnsforwarder.lua
 
-sed -i 's/"GodProxy滤广告"/"KPR去广告"/g' package/gd772/luci-app-godproxy/po/zh-cn/koolproxy.po
+sed -i 's/"GodProxy滤广告"/"KPR去广告"/g' package/0118Add/luci-app-godproxy/po/zh-cn/koolproxy.po
 
-sed -i 's/GodProxy滤广告/KoolProxyR去广告/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy滤广告/KoolProxyR去广告/g' package/0118Add/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy 访问控制/KoolProxyR 访问控制/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy 访问控制/KoolProxyR 访问控制/g' package/0118Add/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy 帮助支持/KoolProxyR帮助支持/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy 帮助支持/KoolProxyR帮助支持/g' package/0118Add/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy是/是/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy是/是/g' package/0118Add/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy/KoolProxyR/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy/KoolProxyR/g' package/0118Add/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy滤广告/KPR去广告/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/rss_rule.lua
+sed -i 's/GodProxy滤广告/KPR去广告/g' package/0118Add/luci-app-godproxy/luasrc/model/cbi/koolproxy/rss_rule.lua
 
-sed -i 's/Shaoxia的KoolProxyR详细使用说明/关于 KoolProxyR 的详细使用说明/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/feedback.htm
+sed -i 's/Shaoxia的KoolProxyR详细使用说明/关于 KoolProxyR 的详细使用说明/g' package/0118Add/luci-app-godproxy/luasrc/view/koolproxy/feedback.htm
 
-sed -i 's/GodProxy/KoolProxyR/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
+sed -i 's/GodProxy/KoolProxyR/g' package/0118Add/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
 
-sed -i 's/KoolProxyR滤广告/KoolProxyR去广告/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
+sed -i 's/KoolProxyR滤广告/KoolProxyR去广告/g' package/0118Add/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
 
-sed -i 's/京东签到服务/京东签到/g' package/gd772/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
+sed -i 's/京东签到服务/京东签到/g' package/0118Add/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
 
 sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/g' package/lean/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
 
@@ -117,7 +117,7 @@ sed -i 's/网络存储/存储/g' package/lean/luci-app-vsftpd/po/zh-cn/vsftpd.po
 
 sed -i 's/挂载 SMB 网络共享/挂载共享/g' package/lean/luci-app-cifs-mount/po/zh-cn/cifs.po
 
-sed -i 's/"文件浏览器"/"文件管理"/g' package/gd772/luci-app-filebrowser/po/zh-cn/filebrowser.po
+sed -i 's/"文件浏览器"/"文件管理"/g' package/0118Add/luci-app-filebrowser/po/zh-cn/filebrowser.po
 
 sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/g' package/lean/luci-app-vsftpd/po/zh-cn/vsftpd.po
 
@@ -172,30 +172,30 @@ curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/mwan3helper_statu
 #sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/view/dockerman/cbi/*.htm
 
 echo -e "\x1B[92m调整 SSRP 到 GFW 菜单\x1B[0m" ""
-sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
-sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/view/shadowsocksr/*.htm
+sed -i 's/services/vpn/g' package/0118Add/ssrplus/luci-app-ssr-plus/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/0118Add/ssrplus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
+sed -i 's/services/vpn/g' package/0118Add/ssrplus/luci-app-ssr-plus/luasrc/view/shadowsocksr/*.htm
 echo -e "\x1B[92m调整 Pass Wall 到 GFW 菜单\x1B[0m" ""
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/model/cbi/passwall/api/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/model/cbi/passwall/client/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/model/cbi/passwall/server/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/app_update/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/global/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/haproxy/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/log/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/node_list/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/rule/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/server/*.htm
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/model/cbi/passwall/api/*.lua
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/model/cbi/passwall/client/*.lua
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/model/cbi/passwall/server/*.lua
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/view/passwall/app_update/*.htm
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/view/passwall/global/*.htm
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/view/passwall/haproxy/*.htm
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/view/passwall/log/*.htm
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/view/passwall/node_list/*.htm
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/view/passwall/rule/*.htm
+sed -i 's/services/vpn/g' package/0118Add/passwall/luci-app-passwall/luasrc/view/passwall/server/*.htm
 echo -e "\x1B[92m调整 Hello World 到 GFW 菜单\x1B[0m" ""
-sed -i 's/services/vpn/g' package/gd772/luci-app-vssr/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/gd772/luci-app-vssr/luasrc/model/cbi/vssr/*.lua
-sed -i 's/services/vpn/g' package/gd772/luci-app-vssr/luasrc/view/vssr/*.htm
+sed -i 's/services/vpn/g' package/0118Add/luci-app-vssr/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/0118Add/luci-app-vssr/luasrc/model/cbi/vssr/*.lua
+sed -i 's/services/vpn/g' package/0118Add/luci-app-vssr/luasrc/view/vssr/*.htm
 echo -e "\x1B[92m调整 Open Clash 到 GFW 菜单\x1B[0m" ""
-sed -i 's/services/vpn/g' package/gd772/luci-app-openclash/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/gd772/luci-app-openclash/luasrc/*.lua
-sed -i 's/services/vpn/g' package/gd772/luci-app-openclash/luasrc/model/cbi/openclash/*.lua
-sed -i 's/services/vpn/g' package/gd772/luci-app-openclash/luasrc/view/openclash/*.htm
+sed -i 's/services/vpn/g' package/0118Add/luci-app-openclash/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/0118Add/luci-app-openclash/luasrc/*.lua
+sed -i 's/services/vpn/g' package/0118Add/luci-app-openclash/luasrc/model/cbi/openclash/*.lua
+sed -i 's/services/vpn/g' package/0118Add/luci-app-openclash/luasrc/view/openclash/*.htm
 echo -e "\x1B[92m调整 V2ray服务 到 GFW 菜单\x1B[0m" ""
 sed -i 's/services/vpn/g' package/lean/luci-app-v2ray-server/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/lean/luci-app-v2ray-server/luasrc/model/cbi/v2ray_server/*.lua
