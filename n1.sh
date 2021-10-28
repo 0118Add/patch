@@ -35,9 +35,11 @@ rm -rf ./package/lean/luci-app-usb-printer
 echo
 TIME b "修改 默认IP为 192.168.123.2"
 sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
+TIME b "修改 主机名为 N1"
+sed -i "s/'OpenWrt'/'N1'/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/x86_index.htm > ./package/lean/autocore/files/x86/index.htm
+curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/n1_index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 TIME b "系统文件 修改完成"
 echo
@@ -75,13 +77,7 @@ rm -rf ./feeds/packages/admin/netdata && svn co https://github.com/sirpdboy/sirp
 echo
 TIME y "添加 Dockerman"
 rm -rf package/gd772/luci-app-dockerman && svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/gd772/luci-app-dockerman
-echo
-TIME y "添加 应用过滤"
-git clone https://github.com/destan19/OpenAppFilter package/gd772/OpenAppFilter
-echo
-TIME y "添加 网络测速"
-git clone https://github.com/sirpdboy/NetSpeedTest package/NetSpeedTest
-echo              
+echo             
 TIME b "插件 重命名..."
 sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
 
@@ -235,12 +231,8 @@ sed -i 's/services/nas/g' package/lean/luci-app-aliyundrive-webdav/luasrc/view/a
 TIME l "菜单调理 完成"
 echo
 TIME y "更新固件 编译日期"
-sed -i "s/2021.10.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
+sed -i "s/2021.10.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
-# echo 
-#TIME y "更换内核"
-#sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
-#sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 echo
 TIME g "自定义文件修复权限"
 chmod -R 755 package/gd772
