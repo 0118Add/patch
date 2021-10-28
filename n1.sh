@@ -33,8 +33,8 @@ rm -rf ./package/lean/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./package/lean/luci-app-usb-printer
 echo
-TIME b "修改 默认IP为 192.168.123.2"
-sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
+TIME b "修改 默认IP为 192.168.1.10"
+sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
 TIME b "修改 主机名为 N1"
 sed -i "s/'OpenWrt'/'N1'/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
