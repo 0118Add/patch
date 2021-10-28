@@ -33,8 +33,8 @@ rm -rf ./package/lean/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./package/lean/luci-app-usb-printer
 echo
-TIME b "修改 默认IP为 192.168.123.2"
-sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
+TIME b "修改 默认IP为 192.168.1.10"
+sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/x86_index.htm > ./package/lean/autocore/files/x86/index.htm
