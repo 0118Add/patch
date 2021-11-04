@@ -58,6 +58,9 @@ echo
 #TIME y "添加 Hello World"
 #git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
 echo
+TIME y "添加 晶晨宝盒"
+git clone git clone https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
+echo
 TIME y "添加 京东签到"
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
 echo
