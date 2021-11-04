@@ -51,10 +51,10 @@ TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
-git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
 echo
 TIME y "添加 Hello World"
-git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
+#git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
 echo
 TIME y "添加 京东签到"
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
