@@ -32,15 +32,16 @@ rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./package/lean/luci-app-usb-printer
+rm -rf ./package/lean/lisaac/luci-app-dockerman
 echo
-TIME b "修改 默认IP为 192.168.1.10"
-sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
+TIME b "修改 默认IP为 192.168.123.2"
+sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
 TIME b "修改 主机名为 N1"
 sed -i "s/'OpenWrt'/'N1'/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
-curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
-curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
+curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/n1_index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 TIME b "系统文件 修改完成"
 echo
 TIME y "添加 gd772 Package"
@@ -52,14 +53,11 @@ echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
-#TIME y "添加 Pass wall"
-#git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
+TIME y "添加 Pass wall"
+git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
 echo
-#TIME y "添加 Hello World"
-#git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
-echo
-TIME y "添加 晶晨宝盒"
-git clone https://github.com/ophub/luci-app-amlogic package/gd772/luci-app-amlogic
+TIME y "添加 Hello World"
+git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
 echo
 TIME y "添加 京东签到"
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
