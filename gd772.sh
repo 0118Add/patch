@@ -32,6 +32,8 @@ rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./package/lean/luci-app-usb-printer
+rm -rf ./package/lean/luci-app-dockerman
+
 echo
 TIME b "修改 默认IP为 192.168.1.10"
 sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
@@ -50,72 +52,72 @@ echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
-TIME y "添加 Pass wall"
+#TIME y "添加 Pass wall"
 #git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
-echo
-TIME y "添加 Hello World"
+#echo
+#TIME y "添加 Hello World"
 #git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
-echo
-TIME y "添加 京东签到"
-git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
-echo
-TIME y "添加 SmartDNS"
-git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
-git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
-echo
-TIME y "添加 KPR去广告"
-git clone https://github.com/project-lede/luci-app-godproxy package/gd772/luci-app-godproxy
-echo
-TIME y "添加 微信推送"
-git clone https://github.com/tty228/luci-app-serverchan.git ./package/gd772/luci-app-serverchan
-echo
+#echo
+#TIME y "添加 京东签到"
+#git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
+#echo
+#TIME y "添加 SmartDNS"
+#git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
+#git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
+#echo
+#TIME y "添加 KPR去广告"
+#git clone https://github.com/project-lede/luci-app-godproxy package/gd772/luci-app-godproxy
+#echo
+#TIME y "添加 微信推送"
+#git clone https://github.com/tty228/luci-app-serverchan.git ./package/gd772/luci-app-serverchan
+#echo
 TIME y "汉化 实时监控"
 rm -rf ./package/lean/luci-app-netdata && svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
 rm -rf ./feeds/packages/admin/netdata && svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
-echo
+#echo
 TIME y "添加 Dockerman"
 rm -rf package/gd772/luci-app-dockerman && svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/gd772/luci-app-dockerman
 echo
-TIME y "添加 应用过滤"
-git clone https://github.com/destan19/OpenAppFilter package/gd772/OpenAppFilter
-echo
-TIME y "添加 网络测速"
-git clone https://github.com/sirpdboy/NetSpeedTest package/NetSpeedTest
-echo              
+#TIME y "添加 应用过滤"
+#git clone https://github.com/destan19/OpenAppFilter package/gd772/OpenAppFilter
+#echo
+#TIME y "添加 网络测速"
+#git clone https://github.com/sirpdboy/NetSpeedTest package/NetSpeedTest
+#echo              
 TIME b "插件 重命名..."
 sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
 
-sed -i 's/msgstr "Web 管理"/msgstr "Web"/g' package/lean/luci-app-webadmin/po/zh-cn/webadmin.po
+#sed -i 's/msgstr "Web 管理"/msgstr "Web"/g' package/lean/luci-app-webadmin/po/zh-cn/webadmin.po
 
 sed -i 's/TTYD 终端/命令行/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
 
 sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 
-sed -i 's/PassWall/Pass Wall/g' package/gd772/passwall/luci-app-passwall/po/zh-cn/passwall.po
+#sed -i 's/PassWall/Pass Wall/g' package/gd772/passwall/luci-app-passwall/po/zh-cn/passwall.po
 
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' package/lean/luci-app-adbyby-plus/po/zh-cn/adbyby.po
 
-sed -i 's/("Dnsforwarder")/("广告过滤")/g' package/lean/luci-app-dnsforwarder/luasrc/controller/dnsforwarder.lua
+#sed -i 's/("Dnsforwarder")/("广告过滤")/g' package/lean/luci-app-dnsforwarder/luasrc/controller/dnsforwarder.lua
 
-sed -i 's/"GodProxy滤广告"/"KPR去广告"/g' package/gd772/luci-app-godproxy/po/zh-cn/koolproxy.po
+#sed -i 's/"GodProxy滤广告"/"KPR去广告"/g' package/gd772/luci-app-godproxy/po/zh-cn/koolproxy.po
 
-sed -i 's/GodProxy滤广告/KoolProxyR去广告/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+#sed -i 's/GodProxy滤广告/KoolProxyR去广告/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy 访问控制/KoolProxyR 访问控制/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+#sed -i 's/GodProxy 访问控制/KoolProxyR 访问控制/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy 帮助支持/KoolProxyR帮助支持/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+#sed -i 's/GodProxy 帮助支持/KoolProxyR帮助支持/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy是/是/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+#sed -i 's/GodProxy是/是/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy/KoolProxyR/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+#sed -i 's/GodProxy/KoolProxyR/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 
-sed -i 's/GodProxy滤广告/KPR去广告/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/rss_rule.lua
+#sed -i 's/GodProxy滤广告/KPR去广告/g' package/gd772/luci-app-godproxy/luasrc/model/cbi/koolproxy/rss_rule.lua
 
-sed -i 's/Shaoxia的KoolProxyR详细使用说明/关于 KoolProxyR 的详细使用说明/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/feedback.htm
+#sed -i 's/Shaoxia的KoolProxyR详细使用说明/关于 KoolProxyR 的详细使用说明/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/feedback.htm
 
-sed -i 's/GodProxy/KoolProxyR/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
+#sed -i 's/GodProxy/KoolProxyR/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
 
-sed -i 's/KoolProxyR滤广告/KoolProxyR去广告/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
+#sed -i 's/KoolProxyR滤广告/KoolProxyR去广告/g' package/gd772/luci-app-godproxy/luasrc/view/koolproxy/koolproxy_status.htm
 
 sed -i 's/京东签到服务/京东签到/g' package/gd772/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
 
