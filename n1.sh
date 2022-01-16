@@ -232,7 +232,7 @@ sed -i 's/services/nas/g' package/lean/luci-app-aliyundrive-webdav/luasrc/view/a
 TIME l "菜单调理 完成"
 echo
 TIME y "更新固件 编译日期"
-sed -i "s/2021.10.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+sed -i "s/2021.01.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
 echo
 TIME g "自定义文件修复权限"
