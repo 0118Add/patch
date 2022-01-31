@@ -51,6 +51,7 @@ git clone https://github.com/fw876/helloworld package/gd772/ssrplus
 echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
+curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/openclash.lua > ./package/gd772/luci-app-openclash/luasrc/controller/openclash.lua
 echo
 TIME y "添加 Pass wall"
 git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
@@ -235,9 +236,9 @@ sed -i 's/services/nas/g' package/lean/luci-app-aliyundrive-webdav/luasrc/model/
 sed -i 's/services/nas/g' package/lean/luci-app-aliyundrive-webdav/luasrc/view/aliyundrive-webdav/*.htm
 
 TIME l "菜单调理 完成"
-echo
-TIME y "更新固件 编译日期"
-sed -i "s/2022.01.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
+#echo
+#TIME y "更新固件 编译日期"
+#sed -i "s/2022.01.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
 
 echo 
 TIME y "更换5.4内核"
