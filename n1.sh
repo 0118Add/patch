@@ -232,7 +232,7 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/luasrc/contro
 TIME l "调整完成"
 echo
 TIME y "更新固件 编译日期"
-sed -i "s/2022.02.02/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+sed -i "s/2022年02月02日/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
 echo
 TIME g "自定义文件修复权限"
