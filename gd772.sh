@@ -184,7 +184,7 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/luasrc/contro
 TIME l "调整完成"
 echo
 #TIME y "更新固件 编译日期"
-sed -i "s/2022.02.02/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
+sed -i "s/2022-02-02/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
 
 echo 
 TIME y "更换5.4内核"
