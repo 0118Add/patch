@@ -37,20 +37,13 @@ rm -rf ./feeds/luci/applications/luci-app-dockerman
 rm -rf ./feeds/luci/applications/luci-app-unblockmusic
 
 echo
-TIME b "修改 默认IP为 192.168.1.10"
-sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
-
-echo
-TIME b "修改 主机名为 N1"
-sed -i "s/'OpenWrt'/'N1'/g" package/base-files/files/bin/config_generate
-
-echo
+TIME b "修改 默认IP为 192.168.123.254"
+sed -i "s/192.168.1.1/192.168.123.254/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 TIME b "系统文件 修改完成"
-
 echo
 TIME y "添加 gd772 Package"
 rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
@@ -96,91 +89,50 @@ git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic pa
 echo             
 TIME b "插件 重命名..."
 sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
-
 sed -i 's/msgstr "Web 管理"/msgstr "Web"/g' feeds/luci/applications/luci-app-webadmin/po/zh-cn/webadmin.po
-
 sed -i 's/TTYD 终端/命令行/g' feeds/luci/applications/luci-app-ttyd/po/zh-cn/terminal.po
-
 sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
-
 sed -i 's/PassWall/Pass Wall/g' package/gd772/passwall/luci-app-passwall/po/zh-cn/passwall.po
-
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' feeds/luci/applications/luci-app-adbyby-plus/po/zh-cn/adbyby.po
-
 sed -i 's/iKoolProxy 滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/luasrc/controller/*.lua
 sed -i 's/iKoolProxy滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/luasrc/model/cbi/koolproxy/*.lua
 sed -i 's/iKoolProxy 滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/luasrc/view/koolproxy/*.htm
-
 sed -i 's/京东签到服务/京东签到/g' package/gd772/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
-
 sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/g' feeds/luci/applications/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
-
 sed -i 's/msgstr "UPnP"/msgstr "UPnP设置"/g' feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
-
 sed -i 's/Frp 内网穿透/Frp 客户端/g' feeds/luci/applications/luci-app-frpc/po/zh-cn/frp.po
-
 sed -i 's/Frps/Frp 服务端/g' feeds/luci/applications/luci-app-frps/luasrc/controller/frps.lua
-
 sed -i 's/Nps 内网穿透/Nps 客户端/g' feeds/luci/applications/luci-app-nps/po/zh-cn/nps.po
-
 sed -i 's/解除网易云音乐播放限制/音乐解锁/g' package/gd772/luci-app-unblockneteasemusic/luasrc/controller/unblockneteasemusic.lua
-
 sed -i 's/Docker CE 容器/Docker容器/g' feeds/luci/applications/luci-app-docker/po/zh-cn/docker.po
-
 sed -i 's/UU游戏加速器/UU加速器/g' feeds/luci/applications/luci-app-uugamebooster/po/zh-cn/uuplugin.po
-
 sed -i 's/网络存储/存储/g' feeds/luci/applications/luci-app-vsftpd/po/zh-cn/vsftpd.po
-
 sed -i 's/挂载 SMB 网络共享/挂载共享/g' feeds/luci/applications/luci-app-cifs-mount/po/zh-cn/cifs.po
-
 sed -i 's/"文件浏览器"/"文件管理"/g' package/gd772/luci-app-filebrowser/po/zh-cn/filebrowser.po
-
 sed -i 's/"阿里云盘 WebDAV"/"阿里云盘"/g' feeds/luci/applications/luci-app-aliyundrive-webdav/po/zh-cn/aliyundrive-webdav.po
-
 sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/g' feeds/luci/applications/luci-app-vsftpd/po/zh-cn/vsftpd.po
-
 sed -i 's/Rclone/网盘挂载/g' feeds/luci/applications/luci-app-rclone/luasrc/controller/rclone.lua
-
 sed -i 's/msgstr "Aria2"/msgstr "Aria2下载"/g' feeds/luci/applications/luci-app-aria2/po/zh-cn/aria2.po
-
-sed -i 's/_("qBittorrent")/_("BT下载")/g' feeds/luci/applications/luci-app-qbittorrent/luasrc/controller/qbittorrent.lua
-
+sed -i 's/_("qBittorrent")/_("qB下载")/g' feeds/luci/applications/luci-app-qbittorrent/luasrc/controller/qbittorrent.lua
 sed -i 's/BaiduPCS Web/百毒网盘/g' feeds/luci/applications/luci-app-baidupcs-web/luasrc/controller/baidupcs-web.lua
-
 sed -i 's/IPSec VPN 服务器/IPSec 服务/g' feeds/luci/applications/luci-app-ipsec-vpnd/po/zh-cn/ipsec.po
-
 sed -i 's/"PPTP VPN 服务器"/"PPTP 服务"/g' feeds/luci/applications/luci-app-pptp-server/po/zh-cn/pptp.po
-
 sed -i 's/V2ray 服务器/V2ray 服务/g' feeds/luci/applications/luci-app-v2ray-server/po/zh-cn/v2ray_server.po
-
 sed -i 's/SoftEther VPN 服务器/SoftEther/g' feeds/luci/applications/luci-app-softethervpn/po/zh-cn/softethervpn.po
-
 sed -i 's/"OpenVPN 服务器"/"OpenVPN"/g' feeds/luci/applications/luci-app-openvpn-server/po/zh-cn/openvpn-server.po
-
 sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' feeds/luci/applications/luci-app-zerotier/luasrc/controller/zerotier.lua
-
 sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' feeds/luci/applications/luci-app-ipsec-vpnd/luasrc/controller/ipsec-server.lua
-
 sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' feeds/luci/applications/luci-app-softethervpn/luasrc/controller/softethervpn.lua
-
 sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' feeds/luci/applications/luci-app-openvpn-server/luasrc/controller/openvpn-server.lua
-
 sed -i 's/WireGuard 状态/WiGd状态/g' feeds/luci/applications/luci-app-wireguard/po/zh-cn/wireguard.po
-
 sed -i 's/Turbo ACC 网络加速/网络加速/g' feeds/luci/applications/luci-app-turboacc/po/zh-cn/turboacc.po
-
 sed -i 's/MWAN3 分流助手/分流助手/g' feeds/luci/applications/luci-app-mwan3helper/po/zh-cn/mwan3helper.po
-
 sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
-
 sed -i 's/实时流量监测/流量监测/g' feeds/luci/applications/luci-app-wrtbwmon/po/zh-cn/wrtbwmon.po
-
 TIME b "重命名 完成"
-
-#sed -i 's/invalid/## invalid/g' feeds/packages/net/samba4/files/smb.conf.template
-
+sed -i 's/invalid/## invalid/g' feeds/packages/net/samba4/files/smb.conf.template
 echo
-TIME b "菜单调整 整理..."
+TIME b "菜单调整..."
 TIME b "调整 网络共享 到 存储菜单"
 sed -i 's/\"services\"/\"nas\"/g' feeds/luci/applications/luci-app-samba4/luasrc/controller/samba4.lua
 TIME b "调整 分流助手 到 网络菜单"
@@ -232,12 +184,18 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/luasrc/contro
 TIME l "调整完成"
 echo
 TIME y "更新固件 编译日期"
-sed -i "s/2022-02-02/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
-
+sed -i "s/2022-02-02/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
+echo 
+#TIME y "更换5.4内核"
+#sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.4/g' ./target/linux/x86/Makefile
+#sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
+#echo 
+#TIME y "更换内核版本"
+#sed -i 's/.162/.170/g' ./include/kernel-version.mk
+#sed -i 's/c12d72ddaac78189305a5e98825295ecb02282970033b052276035e83189e25b/b09f74e0cf5fc7cf5de6aa932fe654c962cb10118bdbbdddb397022c6e6d382c/g' ./include/kernel-version.mk
 echo
 TIME g "自定义文件修复权限"
 chmod -R 755 package/gd772
-
 echo
 TIME g "更新配置..."
 ./scripts/feeds update -i
