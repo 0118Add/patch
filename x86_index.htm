@@ -46,23 +46,18 @@
 		local cpu_info = luci.sys.exec("cpuinfo")
 
 		local eth_info = luci.sys.exec("ethinfo")
-		local user_info = luci.sys.exec("cat /proc/net/arp | grep '0x2' | wc -l") or 0
-		local cpu_wd = (luci.sys.exec("cpuwd")) .. "°C"
-        if  cpu_wd == "0°C" or cpu_wd == "°C"   then
-		    cpu_wd= "0°C （无温控或虚拟机）"
-       	end
 
+		local user_info = luci.sys.exec("cat /proc/net/arp | grep '0x2' | wc -l") or 0
 		local cpu_usage = (luci.sys.exec("expr 100 - $(top -n 1 | grep 'CPU:' | awk -F '%' '{print$4}' | awk -F ' ' '{print$2}')") or "6") .. "%"
         local ram_size = luci.sys.exec("free -m | grep Mem | awk '{print $2/1024}'")
 		local rv = {
 			cpuusage    = cpu_usage,
 			cpuinfo    = cpu_info,
-			cpuwd    = cpu_wd,
 			ethinfo    = eth_info,
 			userinfo    = user_info,
             ramsize    = ram_size,
 			uptime     = sysinfo.uptime or 0,
-			localtime  = os.date("%Y年%m月%d日") .. " " .. translate(os.date("%A")) .. " " .. os.date("%X"),
+			localtime  = os.date("%Y年%m月%d日 星期") .. " " .. translate(os.date("%A")) .. " " .. os.date("%X"),
 			loadavg    = sysinfo.load or { 0, 0, 0 },
 			memory     = meminfo,
 			memcached  = mem_cached,
@@ -190,7 +185,7 @@
 		});
 	}
 
-	XHR.poll(5, '<%=REQUEST_URI%>', { status: 1 },
+	XHR.poll(1, '<%=REQUEST_URI%>', { status: 1 },
 		function(x, info)
 		{
 			if (!(npoll++ % 5))
@@ -674,9 +669,6 @@
 
 			if (e = document.getElementById('cpuinfo'))
 				e.innerHTML = info.cpuinfo;
-
-			if (e = document.getElementById('cpuwd'))
-				e.innerHTML = info.cpuwd;
 				
 			if (e = document.getElementById('cpuusage'))
 				e.innerHTML = info.cpuusage;
@@ -693,29 +685,23 @@
 					info.loadavg[1] / 65535.0,
 					info.loadavg[2] / 65535.0
 				);
-				
+
 			if (e = document.getElementById('memtotal'))
 				e.innerHTML = progressbar(
 					Math.floor(((info.memory.free + info.memory.buffered) / 1048576) + (info.memcached / 1024)) + " <%:MB%>",
 					Math.floor(info.memory.total / 1048576) + " <%:MB%>"
 
 				);
+
 			if (e = document.getElementById('memfree'))
 				e.innerHTML = progressbar(
-					Math.floor((((info.memory.total - info.memory.free )- info.memory.buffered) / 1048576) - (info.memcached / 1024)) + " <%:MB%>",
-					Math.floor(info.memory.total / 1048576) + " <%:MB%>"
-
-				);
-
-			if (e = document.getElementById('memcach'))
-				e.innerHTML = progressbar(
-					Math.floor(info.memory.memcached / 1048576) + " <%:MB%>",
+					Math.floor(info.memory.free / 1048576) + " <%:MB%>",
 					Math.floor(info.memory.total / 1048576) + " <%:MB%>"
 				);
 
 			if (e = document.getElementById('membuff'))
 				e.innerHTML = progressbar(
-					Math.floor(info.memory.buffered / 1048576 ) + " <%:MB%>",
+					Math.floor(info.memory.buffered / 1048576) + " <%:MB%>",
 					Math.floor(info.memory.total / 1048576) + " <%:MB%>"
 				);
 
@@ -738,17 +724,14 @@
 	);
 //]]></script>
 
-<h2 name="content"><%:Status%></h2>
-
 <fieldset class="cbi-section">
 	<legend><%:System%></legend>
 
 	<table width="100%" cellspacing="10">
 		<tr><td width="33%"><%:Hostname%></td><td><%=luci.sys.hostname() or "?"%></td></tr>
-		<tr><td width="33%"><%:型号参数%></td><td><%=pcdata(boardinfo.model or "?")%> <%=luci.sys.exec("cat /etc/bench.log") or " "%></td></tr>
-		<tr><td width="33%"><%:实时频率%></td><td id="cpuinfo">-</td></tr>
-		<tr><td width="33%"><%:内核温度%></td><td id="cpuwd">-</td></tr>
-        <tr><td width="33%"><%:RAM Size%></td><td id="ramsize">-</td></tr>
+		<tr><td width="33%"><%:Model%></td><td><%=pcdata(boardinfo.model or "?")%> <%=luci.sys.exec("cat /etc/bench.log") or " "%></td></tr>
+		<tr><td width="33%"><%:CPU Info%></td><td id="cpuinfo">-</td></tr>
+        <tr><td width="33%"><%:内存大小%></td><td id="ramsize">-</td></tr>
 		<tr><td width="33%"><%:Firmware Version%></td><td>
 			<%=pcdata(ver.distname)%> <%=pcdata(ver.distversion)%> /
 			<%=pcdata(ver.luciname)%> (<%=pcdata(ver.luciversion)%>)
@@ -756,18 +739,18 @@
 		<tr><td width="33%"><%:Kernel Version%></td><td><%=unameinfo.release or "?"%></td></tr>
 		<tr><td width="33%"><%:Local Time%></td><td id="localtime">-</td></tr>
 		<tr><td width="33%"><%:Uptime%></td><td id="uptime">-</td></tr>
-		<tr><td width="33%"><%:CPU usage (%)%></td><td id="cpuusage">-</td></tr>
 		<tr><td width="33%"><%:Load Average%></td><td id="loadavg">-</td></tr>
-		</tr></tr>
-        </table>
+		<tr><td width="33%"><%:CPU usage (%)%></td><td id="cpuusage">-</td></tr>
+                <tr><td width="33%"><%:固件编译日期%></td><td id="cpuusage">BGG by 2022-3-13 编译</td></tr>
+                </table>
 </fieldset>
 
 
 <fieldset class="cbi-section">
 	<legend><%:Memory%></legend>
 	<table width="100%" cellspacing="10">
-		<tr><td width="33%"><%:可用数%></td><td id="memtotal">-</td></tr>
-		<tr><td width="33%"><%:已使用%></td><td id="memfree">-</td></tr>
+		<tr><td width="33%"><%:Total Available%></td><td id="memtotal">-</td></tr>
+		<tr><td width="33%"><%:Free%></td><td id="memfree">-</td></tr>
 		<tr><td width="33%"><%:Buffered%></td><td id="membuff">-</td></tr>
 	</table>
 </fieldset>
@@ -775,6 +758,7 @@
 <% if swapinfo.total > 0 then %>
 <fieldset class="cbi-section">
 	<legend><%:Swap%></legend>
+
 	<table width="100%" cellspacing="10">
 		<tr><td width="33%"><%:Total Available%></td><td id="swaptotal">-</td></tr>
 		<tr><td width="33%"><%:Free%></td><td id="swapfree">-</td></tr>
