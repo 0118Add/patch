@@ -39,8 +39,8 @@ rm -rf ./feeds/luci/applications/luci-app-ipsec-vpnd
 rm -rf ./feeds/luci/applications/luci-app-samba4
 
 echo
-TIME b "修改 默认IP为 192.168.123.254"
-sed -i "s/192.168.1.1/192.168.123.254/g" package/base-files/files/bin/config_generate
+TIME b "修改 默认IP为 192.168.1.10"
+sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/x86_index.htm > ./package/lean/autocore/files/x86/index.htm
@@ -188,10 +188,10 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/luasrc/contro
 TIME l "调整完成"
 echo
 TIME y "更新固件 编译日期"
-sed -i "s/2022-3-13/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
+sed -i "s/2022-5-1/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
 echo 
-TIME y "更换5.4内核"
-sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.4/g' ./target/linux/x86/Makefile
+#TIME y "更换5.4内核"
+#sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.4/g' ./target/linux/x86/Makefile
 echo
 TIME g "自定义文件修复权限"
 chmod -R 755 package/gd772
