@@ -35,6 +35,7 @@ rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./feeds/luci/applications/luci-app-usb-printer
 rm -rf ./feeds/luci/applications/luci-app-dockerman
 rm -rf ./feeds/luci/applications/luci-app-unblockmusic
+rm -rf ./feeds/luci/applications/luci-app-ipsec-vpnd
 
 echo
 TIME b "修改 默认IP为 192.168.1.10"
@@ -50,14 +51,12 @@ rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd77
 echo
 TIME y "添加 SSR Plus+"
 git clone https://github.com/fw876/helloworld package/gd772/ssrplus
-curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/shadowsocksr.lua > ./package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
 git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall && git clone -b luci https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/gd772/passwall && rm -rf openwrt-passwall
-curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/passwall.lua > ./package/gd772/passwall/luci-app-passwall/luasrc/controller/passwall.lua
 echo
 TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
@@ -184,17 +183,9 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-aria2/luasrc/controll
 TIME b "调整 硬盘休眠 到 存储 菜单"
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/luasrc/controller/hd_idle.lua
 TIME l "调整完成"
-echo
-TIME y "更新固件 编译日期"
-sed -i "s/2022-5-1/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
-echo 
-#TIME y "更换5.4内核"
-#sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.4/g' ./target/linux/x86/Makefile
-#sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
-#echo 
-#TIME y "更换内核版本"
-#sed -i 's/.162/.170/g' ./include/kernel-version.mk
-#sed -i 's/c12d72ddaac78189305a5e98825295ecb02282970033b052276035e83189e25b/b09f74e0cf5fc7cf5de6aa932fe654c962cb10118bdbbdddb397022c6e6d382c/g' ./include/kernel-version.mk
+#echo
+#TIME y "更新固件 编译日期"
+#sed -i "s/2021.10.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 echo
 TIME g "自定义文件修复权限"
 chmod -R 755 package/gd772
