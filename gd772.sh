@@ -148,6 +148,10 @@ sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/mod
 sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/model/cbi/dockerman/*.lua
 sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/view/dockerman/*.htm
 sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/view/dockerman/cbi/*.htm
+TIME b "调整 Zerotier 到 服务 菜单"
+sed -i 's/"admin",/"admin","services",/g' feeds/luci/applications/luci-app-zerotier/luasrc/controller/*.lua
+sed -i 's/"admin/"admin\/services/g' feeds/luci/applications/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
+sed -i 's/"admin/"admin\/services/g' feeds/luci/applications/luci-app-zerotier/luasrc/view/zerotier/*.htm
 TIME b "调整 SSRP 到 GFW 菜单"
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
