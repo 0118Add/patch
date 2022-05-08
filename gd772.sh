@@ -64,6 +64,9 @@ echo
 TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
 echo
+TIME y "添加 bypass"
+svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package/gd772/bypass
+echo
 TIME y "添加 京东签到"
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
 echo
@@ -152,6 +155,10 @@ TIME b "调整 Zerotier 到 服务 菜单"
 sed -i 's/"admin",/"admin","services",/g' feeds/luci/applications/luci-app-zerotier/luasrc/controller/*.lua
 sed -i 's/"admin/"admin\/services/g' feeds/luci/applications/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
 sed -i 's/"admin/"admin\/services/g' feeds/luci/applications/luci-app-zerotier/luasrc/view/zerotier/*.htm
+TIME b "调整 bypass 到 GFW 菜单"
+sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
+sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/view/bypass/*.htm
 TIME b "调整 SSRP 到 GFW 菜单"
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
