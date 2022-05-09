@@ -156,9 +156,9 @@ sed -i 's/"admin",/"admin","services",/g' feeds/luci/applications/luci-app-zerot
 sed -i 's/"admin/"admin\/services/g' feeds/luci/applications/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
 sed -i 's/"admin/"admin\/services/g' feeds/luci/applications/luci-app-zerotier/luasrc/view/zerotier/*.htm
 TIME b "调整 bypass 到 GFW 菜单"
-sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
-sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/view/bypass/*.htm
+sed -i 's/services/vpn/g' package/gd772/bypass/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/gd772/bypass/luasrc/model/cbi/bypass/*.lua
+sed -i 's/services/vpn/g' package/gd772/bypass/luasrc/view/bypass/*.htm
 TIME b "调整 SSRP 到 GFW 菜单"
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
