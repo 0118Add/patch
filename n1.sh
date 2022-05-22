@@ -38,7 +38,7 @@ rm -rf ./feeds/luci/applications/luci-app-unblockmusic
 rm -rf ./feeds/luci/applications/luci-app-ipsec-vpnd
 
 echo
-TIME b "修改 默认IP为 192.168.1.10"
+TIME b "修改 默认IP为 192.168.2.10"
 sed -i "s/192.168.1.1/192.168.2.10/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
