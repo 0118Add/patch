@@ -66,6 +66,9 @@ echo
 TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
 echo
+TIME y "添加 Bypass"
+git clone git clone https://github.com/kiddin9/openwrt-bypass package/gd772/bypass
+echo
 TIME y "添加 SmartDNS"
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
@@ -145,6 +148,10 @@ curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/mwan3helper_statu
 #sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/model/cbi/dockerman/*.lua
 #sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/view/dockerman/*.htm
 #sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/view/dockerman/cbi/*.htm
+TIME b "调整 bypass 到 GFW 菜单"
+sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
+sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/view/bypass/*.htm
 TIME b "调整 SSRP 到 GFW 菜单"
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
