@@ -27,7 +27,6 @@ rm -rf ./feeds/luci/themes/luci-theme-argon
 rm -rf ./feeds/luci/themes/luci-theme-netgear
 rm -rf ./feeds/luci/themes/luci-theme-material
 TIME r "删除重复插件"
-rm -rf ./feeds/packages/net/smartdns
 rm -rf ./feeds/luci/applications/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./feeds/luci/applications/luci-app-usb-printer
@@ -42,7 +41,6 @@ sed -i "s/192.168.1.1/192.168.2.1/g" package/base-files/files/bin/config_generat
 TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/x86_index.htm > ./package/lean/autocore/files/x86/index.htm
-curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 rm -rf ./feeds/packages/net/samba4 && svn co https://github.com/sirpdboy/diy/trunk/samba4 ./feeds/packages/net/samba4
 TIME b "系统文件 修改完成"
 echo
@@ -71,7 +69,6 @@ git clone https://github.com/kiddin9/openwrt-bypass package/gd772/bypass
 echo
 TIME y "添加 SmartDNS"
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
-git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 echo
 TIME y "添加 MosDNS"
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/gd772/luci-app-mosdns
