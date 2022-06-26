@@ -64,5 +64,3 @@ rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
 
 exit 0
-© 2022 GitHub, Inc.
-Terms
