@@ -48,7 +48,7 @@ TIME y "添加 gd772 Package"
 rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
 echo
 TIME y "添加 SSR Plus+"
-git clone https://github.com/8688Add/helloworld package/gd772/ssrplus
+git clone https://github.com/fw876/helloworld package/gd772/ssrplus
 sed -i '12a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 echo
 TIME y "添加 小猫咪"
@@ -62,7 +62,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall2 package/gd772/passwall2
 sed -i '16a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/passwall2/luci-app-passwall2/luasrc/controller/passwall2.lua
 echo
 TIME y "添加 Hello World"
-git clone https://github.com/8688Add/luci-app-vssr package/gd772/luci-app-vssr
+git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
 echo
 TIME y "添加 Bypass"
 git clone https://github.com/kiddin9/openwrt-bypass package/gd772/bypass
