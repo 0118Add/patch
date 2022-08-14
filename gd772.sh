@@ -70,9 +70,9 @@ echo
 TIME y "添加 SmartDNS"
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
 echo
-TIME y "添加 MosDNS"
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/gd772/luci-app-mosdns
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/gd772/luci-app-mosdns/mosdns
+#TIME y "添加 MosDNS"
+#svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/gd772/luci-app-mosdns
+#svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/gd772/luci-app-mosdns/mosdns
 echo
 TIME y "添加 微信推送"
 git clone https://github.com/tty228/luci-app-serverchan.git ./package/gd772/luci-app-serverchan
