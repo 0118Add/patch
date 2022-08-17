@@ -27,20 +27,21 @@ rm -rf ./feeds/luci/themes/luci-theme-argon
 rm -rf ./feeds/luci/themes/luci-theme-netgear
 rm -rf ./feeds/luci/themes/luci-theme-material
 TIME r "删除重复插件"
-rm -rf ./feeds/luci/applications/luci-app-netdata
 rm -rf ./feeds/luci/applications/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./feeds/luci/applications/luci-app-usb-printer
 rm -rf ./feeds/luci/applications/luci-app-dockerman
 rm -rf ./feeds/luci/applications/luci-app-unblockmusic
 rm -rf ./feeds/luci/applications/luci-app-ipsec-vpnd
+rm -rf ./feeds/luci/applications/luci-app-samba4
 
 echo
 TIME b "修改 默认IP为 192.168.2.10"
 sed -i "s/192.168.1.1/192.168.2.10/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-
+curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > ./package/lean/autocore/files/arm/index.htm
+rm -rf ./feeds/packages/net/samba4 && svn co https://github.com/sirpdboy/diy/trunk/samba4 ./feeds/packages/net/samba4
 TIME b "系统文件 修改完成"
 echo
 TIME y "添加 gd772 Package"
@@ -69,9 +70,9 @@ echo
 TIME y "添加 SmartDNS"
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
 echo
-TIME y "添加 MosDNS"
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/gd772/luci-app-mosdns
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/gd772/luci-app-mosdns/mosdns
+#TIME y "添加 MosDNS"
+#svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/gd772/luci-app-mosdns
+#svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/gd772/luci-app-mosdns/mosdns
 echo
 TIME y "添加 微信推送"
 git clone https://github.com/tty228/luci-app-serverchan.git ./package/gd772/luci-app-serverchan
@@ -88,9 +89,6 @@ echo
 TIME y "添加 解除网易云音乐"
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/gd772/luci-app-unblockneteasemusic
 echo             
-TIME y "添加 阿里云盘"
-git clone git clone https://github.com/messense/aliyundrive-webdav.git package/gd772/luci-app-aliyundrive-webdav
-echo
 TIME b "插件 重命名..."
 sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
 sed -i 's/msgstr "Web 管理"/msgstr "Web"/g' feeds/luci/applications/luci-app-webadmin/po/zh-cn/webadmin.po
@@ -103,7 +101,7 @@ sed -i 's/iKoolProxy滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/
 sed -i 's/iKoolProxy 滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/luasrc/view/koolproxy/*.htm
 sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/g' feeds/luci/applications/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
 sed -i 's/msgstr "UPnP"/msgstr "UPnP设置"/g' feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
-sed -i 's/Frp 内网穿透/Frp 客户端/g' feeds/luci/applications/luci-app-frpc/po/zh-cn/frp.po
+sed -i 's/Frp 内网穿透/Frp 穿透/g' feeds/luci/applications/luci-app-frpc/po/zh-cn/frp.po
 sed -i 's/Frps/Frp 服务端/g' feeds/luci/applications/luci-app-frps/luasrc/controller/frps.lua
 sed -i 's/Nps 内网穿透/Nps 客户端/g' feeds/luci/applications/luci-app-nps/po/zh-cn/nps.po
 sed -i 's/解除网易云音乐播放限制/音乐解锁/g' package/gd772/luci-app-unblockneteasemusic/luasrc/controller/unblockneteasemusic.lua
@@ -120,7 +118,7 @@ sed -i 's/_("qBittorrent")/_("BT下载")/g' feeds/luci/applications/luci-app-qbi
 sed -i 's/BaiduPCS Web/百度网盘/g' feeds/luci/applications/luci-app-baidupcs-web/luasrc/controller/baidupcs-web.lua
 sed -i 's/IPSec VPN 服务器/IPSec 服务/g' feeds/luci/applications/luci-app-ipsec-server/po/zh-cn/ipsec-server.po
 sed -i 's/"PPTP VPN 服务器"/"PPTP 服务"/g' feeds/luci/applications/luci-app-pptp-server/po/zh-cn/pptp.po
-sed -i 's/V2ray 服务器/V2ray 服务/g' feeds/luci/applications/luci-app-v2ray-server/po/zh-cn/v2ray_server.po
+sed -i 's/V2ray 服务器/V2ray服务/g' feeds/luci/applications/luci-app-v2ray-server/po/zh-cn/v2ray_server.po
 sed -i 's/SoftEther VPN 服务器/SoftEther/g' feeds/luci/applications/luci-app-softethervpn/po/zh-cn/softethervpn.po
 sed -i 's/"OpenVPN 服务器"/"OpenVPN"/g' feeds/luci/applications/luci-app-openvpn-server/po/zh-cn/openvpn-server.po
 sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' feeds/luci/applications/luci-app-zerotier/luasrc/controller/zerotier.lua
@@ -212,8 +210,8 @@ echo
 #TIME y "更新固件 编译日期"
 #sed -i "s/2022.02.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" package/lean/autocore/files/x86/index.htm
 echo 
-#TIME y "更换5.4内核"
-#sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.4/g' ./target/linux/x86/Makefile
+TIME y "更换内核"
+sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' ./target/linux/armvirt/Makefile
 echo
 TIME g "自定义文件修复权限"
 chmod -R 755 package/gd772
