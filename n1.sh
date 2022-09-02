@@ -50,7 +50,7 @@ TIME y "添加 gd772 Package"
 rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
 echo
 TIME y "添加 SSR Plus+"
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/gd772/ssrplus
+git clone https://github.com/fw876/helloworld package/gd772/ssrplus
 sed -i '12a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 echo
 TIME y "添加 小猫咪"
