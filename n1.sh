@@ -41,8 +41,8 @@ echo
 TIME b "修改 默认IP为 192.168.2.10"
 sed -i "s/192.168.1.1/192.168.2.10/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
-curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > ./package/lean/autocore/files/arm/index.htm
+#curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+#curl -fsSL https://raw.githubusercontent.com/0118Add/patch/main/n1_index.htm > ./package/lean/autocore/files/arm/index.htm
 rm -rf ./feeds/packages/net/samba4 && svn co https://github.com/sirpdboy/diy/trunk/samba4 ./feeds/packages/net/samba4
 TIME b "系统文件 修改完成"
 echo
