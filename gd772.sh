@@ -46,9 +46,9 @@ TIME b "修改 系统文件..."
 rm -rf ./feeds/packages/net/samba4 && svn co https://github.com/sirpdboy/diy/trunk/samba4 ./feeds/packages/net/samba4
 TIME b "系统文件 修改完成"
 echo
-TIME y "添加 gd772 Package"
-rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
-echo
+#TIME y "添加 gd772 Package"
+#rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
+#echo
 TIME y "添加 SSR Plus+"
 git clone https://github.com/fw876/helloworld package/gd772/ssrplus
 sed -i '12a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
