@@ -27,6 +27,7 @@ rm -rf ./feeds/luci/themes/luci-theme-argon
 rm -rf ./feeds/luci/themes/luci-theme-netgear
 rm -rf ./feeds/luci/themes/luci-theme-material
 TIME r "删除重复插件"
+rm -rf ./package/lean/autosamba
 rm -rf ./feeds/luci/applications/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./feeds/luci/applications/luci-app-usb-printer
