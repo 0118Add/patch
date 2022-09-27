@@ -68,7 +68,7 @@ TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
 echo
 TIME y "添加 Bypass"
-git clone https://github.com/kiddin9/openwrt-bypass package/gd772/bypass
+svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package/gd772/luci-app-bypass
 echo
 TIME y "添加 SmartDNS"
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
