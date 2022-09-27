@@ -66,6 +66,7 @@ sed -i '16a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' 
 echo
 TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
+git clone https://github.com/jerrykuku/lua-maxminddb package/gd772/lua-maxminddb
 echo
 TIME y "添加 Bypass"
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package/gd772/luci-app-bypass
