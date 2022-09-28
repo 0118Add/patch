@@ -149,9 +149,9 @@ sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/mod
 sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/view/dockerman/*.htm
 sed -i 's/"admin/"admin\/services/g' package/gd772/luci-app-dockerman/luasrc/view/dockerman/cbi/*.htm
 TIME b "调整 bypass 到 GFW 菜单"
-sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
-sed -i 's/services/vpn/g' package/gd772/bypass/luci-app-bypass/luasrc/view/bypass/*.htm
+sed -i 's/services/vpn/g' package/gd772/luci-app-bypass/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/gd772/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
+sed -i 's/services/vpn/g' package/gd772/luci-app-bypass/luasrc/view/bypass/*.htm
 TIME b "调整 SSRP 到 GFW 菜单"
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
