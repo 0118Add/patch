@@ -214,7 +214,7 @@ echo
 #sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.4/g' ./target/linux/x86/Makefile
 echo
 TIME g "自定义文件修复权限"
-chmod -R 755 package/gd772
+chmod -R 755 package
 echo
 TIME g "更新配置..."
 ./scripts/feeds install -a
