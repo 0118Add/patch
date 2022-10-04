@@ -194,7 +194,7 @@
 		});
 	}
 
-	XHR.poll(2, '<%=REQUEST_URI%>', { status: 1 },
+	XHR.poll(1, '<%=REQUEST_URI%>', { status: 1 },
 		function(x, info)
 		{
 			if (!(npoll++ % 5))
