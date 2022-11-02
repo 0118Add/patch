@@ -58,7 +58,7 @@ TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
-git clone -b xray-core https://github.com/xiaorouji/openwrt-passwall package/passwall && git clone -b patch-1 https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/passwall && rm -rf openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall package/passwall && git clone -b patch-1 https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/passwall && rm -rf openwrt-passwall
 echo
 TIME y "添加 Pass wall2"
 git clone https://github.com/xiaorouji/openwrt-passwall2 package/passwall2
