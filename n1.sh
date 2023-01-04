@@ -91,7 +91,7 @@ TIME y "添加 IKP去广告"
 git clone https://github.com/project-lede/luci-app-ikoolproxy package/luci-app-ikoolproxy
 echo
 TIME y "添加 解除网易云音乐"
-git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
+git clone https://github.com/0118Add/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 echo             
 TIME b "插件 重命名..."
 sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
