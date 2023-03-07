@@ -58,7 +58,7 @@ TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
-git clone https://github.com/xiaorouji/openwrt-passwall package/passwall && git clone -b patch-1 https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/passwall && rm -rf openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall package/passwall && git clone -b luci https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/passwall && rm -rf openwrt-passwall
 echo
 TIME y "添加 Pass wall2"
 git clone https://github.com/xiaorouji/openwrt-passwall2 package/passwall2
@@ -73,6 +73,7 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package
 echo
 TIME y "添加 SmartDNS"
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/luci-app-smartdns
+git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 echo
 TIME y "添加 阿里云盘"
 git clone https://github.com/messense/aliyundrive-webdav.git package/aliyundrive-webdav
@@ -167,10 +168,8 @@ sed -i 's/services/vpn/g' package/passwall/luci-app-passwall/luasrc/view/passwal
 sed -i 's/services/vpn/g' package/passwall/luci-app-passwall/luasrc/view/passwall/server/*.htm
 TIME b "调整 Pass Wall 2 到 GFW 菜单"
 sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/api/*.lua
 sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/client/*.lua
 sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/server/*.lua
-sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/server/api/*.lua
 sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/view/passwall2/app_update/*.htm
 sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/view/passwall2/auto_switch/*.htm
 sed -i 's/services/vpn/g' package/passwall2/luci-app-passwall2/luasrc/view/passwall2/global/*.htm
